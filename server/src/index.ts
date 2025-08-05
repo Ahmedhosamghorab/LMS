@@ -9,6 +9,5 @@ app.get('/', (req: Request, res: Response) => {
 });
 
 app.listen(port, () => {
-  // A little splash of color in the console log!
   console.log(`\x1b[32m[server]: Server is running at http://localhost:${port}\x1b[0m`);
 });
