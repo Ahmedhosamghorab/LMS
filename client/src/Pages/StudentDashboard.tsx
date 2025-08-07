@@ -1,5 +1,5 @@
 import NavBarItem from "@/Components/NavBarItem";
-import { BookTextIcon, CalendarRange, CircleCheckBig, CircleIcon, GraduationCap, HomeIcon, LogOutIcon, MessageSquareTextIcon, SettingsIcon } from "lucide-react";
+import { BookTextIcon, CalendarRange, CircleCheckBig, GraduationCap, HomeIcon, LogOutIcon, MessageSquareTextIcon, SettingsIcon } from "lucide-react";
 
 export default function StudentDashboard()
 {
