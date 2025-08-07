@@ -1,4 +1,3 @@
-import { HomeIcon } from "lucide-react";
 
 export default function NavBarItem(props:any): JSX.Element
 {
