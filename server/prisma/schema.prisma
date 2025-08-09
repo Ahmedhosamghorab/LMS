@@ -1,0 +1,49 @@
+generator client {
+  provider = "prisma-client-js"
+}
+enum Role {
+  User
+  Teacher
+}
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+model User {
+  id          Int       @id @default(autoincrement())
+  name        String
+  email       String    @unique
+  password    String
+  profile_pic String? 
+  type        Role      @default(User)
+  isVerified    Boolean   @default(false)
+  verified_At DateTime?
+  verificationOtp Int?
+  verificationOtpExpires DateTime?
+  created_At  DateTime  @default(now())
+  updated_At  DateTime  @updatedAt
+  courses     Course[]  @relation("TeacherCourses")
+  @@map("users")
+}
+model Category{
+  id          Int       @id @default(autoincrement())
+  name       String
+  courses     Course[]  @relation("CategoryCourses")
+  created_At  DateTime @default(now())
+  updated_At  DateTime @updatedAt
+  @@map("categories")
+}
+model Course {
+  id          Int      @id @default(autoincrement())
+  title       String
+  desc        String
+  price       Int
+  duration    Int
+  teacher_id  Int
+  category_id Int
+  category    Category @relation("CategoryCourses" , fields: [category_id], references: [id]) 
+  teacher     User     @relation("TeacherCourses", fields: [teacher_id], references: [id])
+  created_At  DateTime @default(now())
+  updated_At  DateTime @updatedAt
+  @@map("courses")
+}
