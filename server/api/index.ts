@@ -8,7 +8,7 @@ app.use(express.json())
 app.use(cookieParser())
 app.use("/api/auth",authRoutes)
 app.get('/', (req: Request, res: Response) => {
-  res.send('Hello from Express + TypeScript Server!');
+  res.send('Hello from Express(dev branch) + TypeScript Server! ');
 });
 
 app.listen(port, () => {
