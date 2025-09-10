@@ -1,12 +1,15 @@
 import express from 'express';
 import type { Express, Request, Response } from 'express';
 import authRoutes from '../api/routes/auth.routes';
+import categoriesRoutes from '../api/routes/categories.routes';
 import cookieParser from 'cookie-parser';
+import { authenticated } from './middlewares/auth.middleware';
 const app: Express = express();
 const port = process.env.PORT || 3000;
 app.use(express.json())
 app.use(cookieParser())
-app.use("/api/auth",authRoutes)
+app.use("/api/auth", authRoutes);
+app.use("/api/categories" , authenticated,categoriesRoutes);
 app.get('/', (req: Request, res: Response) => {
   res.send('Hello from Express(dev branch) + TypeScript Server! ');
 });
